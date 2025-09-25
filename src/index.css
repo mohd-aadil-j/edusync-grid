@@ -2,87 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ICSS Design System - Professional Educational Platform */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background & Text */
+    --background: 215 25% 97%;
+    --foreground: 215 25% 15%;
 
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary Brand - Professional Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Light Blue Accent */
+    --secondary: 215 25% 95%;
+    --secondary-foreground: 217 78% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Elements */
+    --muted: 215 25% 92%;
+    --muted-foreground: 215 15% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Cyan Highlights */
+    --accent: 193 82% 31%;
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 193 82% 45%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 92%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 95%;
 
-    --radius: 0.5rem;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
+    /* Form Elements */
+    --border: 215 25% 88%;
+    --input: 215 25% 94%;
+    --ring: 217 91% 60%;
+
+    /* Layout */
+    --radius: 0.75rem;
+
+    /* Educational System Specific */
+    --schedule-grid: 215 25% 98%;
+    --schedule-border: 215 25% 85%;
+    --conflict: 0 84% 92%;
+    --approved: 142 76% 92%;
+    --pending: 38 92% 95%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 75%));
+    --gradient-accent: linear-gradient(135deg, hsl(193 82% 31%), hsl(193 82% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(193 82% 31%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(215 25% 98%) 100%);
+
+    /* Shadows */
+    --shadow-subtle: 0 1px 3px hsl(215 25% 15% / 0.1);
+    --shadow-card: 0 4px 6px -1px hsl(215 25% 15% / 0.1), 0 2px 4px -1px hsl(215 25% 15% / 0.06);
+    --shadow-elevated: 0 10px 15px -3px hsl(215 25% 15% / 0.1), 0 4px 6px -2px hsl(215 25% 15% / 0.05);
+    --shadow-primary: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Dark mode for educational platform */
+    --background: 215 25% 8%;
+    --foreground: 215 25% 95%;
+    --card: 215 25% 12%;
+    --card-foreground: 215 25% 95%;
+    --primary: 217 91% 70%;
+    --primary-foreground: 215 25% 8%;
+    --secondary: 215 25% 15%;
+    --secondary-foreground: 217 78% 65%;
+    --accent: 193 82% 45%;
+    --accent-foreground: 215 25% 8%;
+    --muted: 215 25% 15%;
+    --muted-foreground: 215 15% 65%;
+    --border: 215 25% 20%;
+    --input: 215 25% 18%;
+    --schedule-grid: 215 25% 10%;
+    --schedule-border: 215 25% 22%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +125,102 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Button variants for ICSS */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground shadow-lg hover:shadow-xl;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .btn-accent {
+    background: var(--gradient-accent);
+    @apply text-accent-foreground;
+  }
+
+  /* Schedule grid styling */
+  .schedule-grid {
+    background: hsl(var(--schedule-grid));
+    border: 1px solid hsl(var(--schedule-border));
+  }
+
+  .schedule-cell {
+    @apply min-h-[60px] p-2 border border-schedule-border transition-colors;
+  }
+
+  .schedule-cell:hover {
+    @apply bg-primary/5;
+  }
+
+  .schedule-conflict {
+    background: hsl(var(--conflict));
+    @apply border-destructive/30;
+  }
+
+  .schedule-approved {
+    background: hsl(var(--approved));
+    @apply border-success/30;
+  }
+
+  .schedule-pending {
+    background: hsl(var(--pending));
+    @apply border-warning/30;
+  }
+
+  /* Card enhancements */
+  .card-gradient {
+    background: var(--gradient-card);
+    @apply shadow-card hover:shadow-elevated;
+    transition: var(--transition-smooth);
+  }
+
+  .card-interactive {
+    @apply cursor-pointer hover:scale-[1.02];
+    transition: var(--transition-spring);
+  }
+
+  /* Status badges */
+  .status-approved {
+    @apply bg-success/10 text-success border-success/20;
+  }
+
+  .status-pending {
+    @apply bg-warning/10 text-warning border-warning/20;
+  }
+
+  .status-conflict {
+    @apply bg-destructive/10 text-destructive border-destructive/20;
+  }
+
+  /* Form enhancements */
+  .form-section {
+    @apply space-y-6 p-6 bg-card rounded-lg border;
   }
 }
