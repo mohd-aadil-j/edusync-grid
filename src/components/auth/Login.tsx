@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { GraduationCap, Lock, User } from "lucide-react";
 
 interface LoginProps {
-  onLogin: (role: 'admin' | 'scheduler') => void;
+  onLogin: (role: 'admin' | 'scheduler' | 'faculty') => void;
 }
 
 const Login = ({ onLogin }: LoginProps) => {
@@ -42,6 +42,12 @@ const Login = ({ onLogin }: LoginProps) => {
           description: "Welcome back, Scheduler!",
         });
         onLogin('scheduler');
+      } else if (credentials.username === "faculty" && credentials.password === "faculty123") {
+        toast({
+          title: "Welcome Faculty",
+          description: "Login successful",
+        });
+        onLogin('faculty');
       } else {
         toast({
           title: "Login Failed",
@@ -147,6 +153,18 @@ const Login = ({ onLogin }: LoginProps) => {
                     <div>
                       <div className="font-medium">Scheduler</div>
                       <div className="text-xs text-muted-foreground">scheduler / scheduler123</div>
+                    </div>
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCredentials({ username: "faculty", password: "faculty123" })}
+                    className="justify-start text-left h-auto py-2"
+                  >
+                    <div>
+                      <div className="font-medium">Faculty Member</div>
+                      <div className="text-xs text-muted-foreground">faculty / faculty123</div>
                     </div>
                   </Button>
                 </div>

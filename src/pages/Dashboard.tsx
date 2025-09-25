@@ -16,7 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 interface DashboardProps {
-  userRole: 'admin' | 'scheduler';
+  userRole: 'admin' | 'scheduler' | 'faculty';
 }
 
 const Dashboard = ({ userRole }: DashboardProps) => {

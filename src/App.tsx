@@ -9,14 +9,15 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import RoomManagement from "./components/rooms/RoomManagement";
 import TimetableView from "./components/schedule/TimetableView";
+import FacultyManagement from "./components/faculty/FacultyManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [user, setUser] = useState<{ role: 'admin' | 'scheduler' } | null>(null);
+  const [user, setUser] = useState<{ role: 'admin' | 'scheduler' | 'faculty' } | null>(null);
 
-  const handleLogin = (role: 'admin' | 'scheduler') => {
+  const handleLogin = (role: 'admin' | 'scheduler' | 'faculty') => {
     setUser({ role });
   };
 
@@ -47,7 +48,7 @@ const App = () => {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard userRole={user.role} />} />
               <Route path="/dashboard/rooms" element={<RoomManagement />} />
-              <Route path="/dashboard/faculty" element={<div className="p-8 text-center text-muted-foreground">Faculty Management - Coming Soon</div>} />
+              <Route path="/dashboard/faculty" element={<FacultyManagement userRole={user.role} />} />
               <Route path="/dashboard/batches" element={<div className="p-8 text-center text-muted-foreground">Batch Management - Coming Soon</div>} />
               <Route path="/dashboard/subjects" element={<div className="p-8 text-center text-muted-foreground">Subject Management - Coming Soon</div>} />
               <Route path="/dashboard/schedule" element={<TimetableView />} />

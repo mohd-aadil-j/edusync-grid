@@ -29,22 +29,22 @@ import {
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
-  userRole: 'admin' | 'scheduler';
+  userRole: 'admin' | 'scheduler' | 'faculty';
   onLogout: () => void;
 }
 
 const navigationItems = [
-  { title: "Dashboard", url: "/dashboard", icon: Home, roles: ['admin', 'scheduler'] },
+  { title: "Dashboard", url: "/dashboard", icon: Home, roles: ['admin', 'scheduler', 'faculty'] },
   { title: "Rooms", url: "/dashboard/rooms", icon: Building2, roles: ['admin', 'scheduler'] },
-  { title: "Faculty", url: "/dashboard/faculty", icon: Users, roles: ['admin', 'scheduler'] },
+  { title: "Faculty", url: "/dashboard/faculty", icon: Users, roles: ['admin', 'scheduler', 'faculty'] },
   { title: "Batches", url: "/dashboard/batches", icon: BookOpen, roles: ['admin', 'scheduler'] },
   { title: "Subjects", url: "/dashboard/subjects", icon: Calendar, roles: ['admin', 'scheduler'] },
-  { title: "Schedule", url: "/dashboard/schedule", icon: Calendar, roles: ['admin', 'scheduler'] },
+  { title: "Schedule", url: "/dashboard/schedule", icon: Calendar, roles: ['admin', 'scheduler', 'faculty'] },
   { title: "Analytics", url: "/dashboard/analytics", icon: BarChart3, roles: ['admin'] },
   { title: "Settings", url: "/dashboard/settings", icon: Settings, roles: ['admin'] },
 ];
 
-const AppSidebar = ({ userRole, onLogout }: { userRole: 'admin' | 'scheduler'; onLogout: () => void }) => {
+const AppSidebar = ({ userRole, onLogout }: { userRole: 'admin' | 'scheduler' | 'faculty'; onLogout: () => void }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -100,12 +100,12 @@ const AppSidebar = ({ userRole, onLogout }: { userRole: 'admin' | 'scheduler'; o
           <div className="flex items-center gap-3">
             <Avatar className="h-8 w-8">
               <AvatarFallback className="bg-primary text-primary-foreground">
-                {userRole === 'admin' ? 'A' : 'S'}
+                {userRole === 'admin' ? 'A' : userRole === 'scheduler' ? 'S' : 'F'}
               </AvatarFallback>
             </Avatar>
             <div className="flex-1">
               <p className="text-sm font-medium text-sidebar-foreground">
-                {userRole === 'admin' ? 'Administrator' : 'Scheduler'}
+                {userRole === 'admin' ? 'Administrator' : userRole === 'scheduler' ? 'Scheduler' : 'Faculty'}
               </p>
               <Button
                 variant="ghost"
