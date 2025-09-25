@@ -26,6 +26,9 @@ const Login = ({ onLogin }: LoginProps) => {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Debug logging
+      console.log("Login attempt:", { username: credentials.username, password: credentials.password });
+      
       // Mock authentication - in real app, this would call your Spring Boot API
       if (credentials.username === "admin" && credentials.password === "admin123") {
         toast({
@@ -40,14 +43,15 @@ const Login = ({ onLogin }: LoginProps) => {
         });
         onLogin('scheduler');
       } else {
+        toast({
+          title: "Login Failed",
+          description: `Invalid credentials. You entered: "${credentials.username}" / "${credentials.password}"`,
+          variant: "destructive",
+        });
         throw new Error("Invalid credentials");
       }
     } catch (error) {
-      toast({
-        title: "Login Failed",
-        description: "Invalid username or password",
-        variant: "destructive",
-      });
+      console.error("Login error:", error);
     } finally {
       setIsLoading(false);
     }
@@ -117,11 +121,35 @@ const Login = ({ onLogin }: LoginProps) => {
             </form>
 
             {/* Demo Credentials */}
-            <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-              <p className="text-sm font-medium text-muted-foreground mb-2">Demo Credentials:</p>
-              <div className="text-xs space-y-1">
-                <p><strong>Admin:</strong> admin / admin123</p>
-                <p><strong>Scheduler:</strong> scheduler / scheduler123</p>
+            <div className="mt-6 space-y-3">
+              <div className="p-4 bg-primary/5 border border-primary/20 rounded-lg">
+                <p className="text-sm font-semibold text-primary mb-3">🚀 Demo Credentials:</p>
+                <div className="grid grid-cols-1 gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCredentials({ username: "admin", password: "admin123" })}
+                    className="justify-start text-left h-auto py-2"
+                  >
+                    <div>
+                      <div className="font-medium">Administrator</div>
+                      <div className="text-xs text-muted-foreground">admin / admin123</div>
+                    </div>
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCredentials({ username: "scheduler", password: "scheduler123" })}
+                    className="justify-start text-left h-auto py-2"
+                  >
+                    <div>
+                      <div className="font-medium">Scheduler</div>
+                      <div className="text-xs text-muted-foreground">scheduler / scheduler123</div>
+                    </div>
+                  </Button>
+                </div>
               </div>
             </div>
           </CardContent>
